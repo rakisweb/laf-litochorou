@@ -1,7 +1,7 @@
 {
   "name": "ΛΑΦ Λιτοχώρου",
   "short_name": "ΛΑΦ",
-  "description": "Μενού και Τιμοκατάλογος ΛΑΦ Λιτοχώρου",
+  "description": "Ψηφιακό Μενού και Τιμοκατάλογος ΛΑΦ Λιτοχώρου",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#0f110e",
