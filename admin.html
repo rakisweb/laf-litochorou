@@ -74,15 +74,14 @@
         </div>
     </div>
 
-    <script>
-        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
-        // 1. Storage
+        // 1. Configuration & Storage
         function saveConfig() {
             localStorage.setItem('admin_gh_token', document.getElementById('gh-token').value);
             localStorage.setItem('admin_gh_repo', document.getElementById('gh-repo').value);
-            alert("Configuration saved to browser storage.");
+            alert("✅ Configuration saved locally.");
         }
 
         window.onload = () => {
@@ -90,7 +89,7 @@
             document.getElementById('gh-repo').value = localStorage.getItem('admin_gh_repo') || '';
         };
 
-        // 2. PDF Handling
+        // 2. File Handling
         const dropzone = document.getElementById('dropzone');
         const pdfInput = document.getElementById('pdf-input');
         dropzone.onclick = () => pdfInput.click();
@@ -101,47 +100,68 @@
             const reader = new FileReader();
             reader.onload = async function() {
                 const typedarray = new Uint8Array(this.result);
-                const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                const loadingTask = pdfjsLib.getDocument(typedarray);
+                const pdf = await loadingTask.promise;
                 let fullText = "";
 
                 for (let i = 1; i <= pdf.numPages; i++) {
                     const page = await pdf.getPage(i);
                     const content = await page.getTextContent();
-                    fullText += content.items.map(item => item.str).join(" ") + "\n";
+                    
+                    // CRITICAL FIX: Sort text fragments by Y then X coordinates 
+                    // This puts the text back in "Reading Order"
+                    const sortedItems = content.items.sort((a, b) => {
+                        if (a.transform[5] !== b.transform[5]) {
+                            return b.transform[5] - a.transform[5]; // Top to bottom
+                        }
+                        return a.transform[4] - b.transform[4]; // Left to right
+                    });
+
+                    fullText += sortedItems.map(item => item.str).join(" ") + "\n";
                 }
                 parseText(fullText);
             };
             reader.readAsArrayBuffer(file);
         }
 
-        // 3. Extraction Logic (Optimized for your document structure)
+        // 3. Extraction Logic (Date-Centric)
         function parseText(text) {
             const results = [];
-            const dateRegex = /(\d{2}\s[Α-Ω]{3}\s\d{2})/g;
+            // Flexible regex: matches 2 digits, spaces, 3 Greek capitals, spaces, 2 digits
+            const dateRegex = /(\d{2}\s+[Α-Ω]{3}\s+\d{2})/g;
             const dates = [...text.matchAll(dateRegex)];
             
             dates.forEach((match, i) => {
+                const dateStr = match[0];
                 const start = match.index;
                 const end = dates[i+1] ? dates[i+1].index : text.length;
-                const chunk = text.substring(start, end);
+                const chunk = text.substring(start, end).toUpperCase();
                 
+                // Identify the day
                 const dayMatch = chunk.match(/ΔΕΥΤΕΡΑ|ΤΡΙΤΗ|ΤΕΤΑΡΤΗ|ΠΕΜΠΤΗ|ΠΑΡΑΣΚΕΥΗ|ΣΑΒΒΑΤΟ|ΚΥΡΙΑΚΗ/);
                 const dayStr = dayMatch ? dayMatch[0] : "---";
                 const isWeekend = dayStr === "ΣΑΒΒΑΤΟ" || dayStr === "ΚΥΡΙΑΚΗ";
+                const isClosed = chunk.includes("ΚΛΕΙΣΤΑ");
 
                 results.push({
-                    date: match[0],
+                    date: dateStr,
                     day: dayStr,
-                    meal_a: isWeekend ? "Της Ώρας (Κατόπιν Παραγγελίας)" : "ΠΡΟΣ ΕΠΕΞΕΡΓΑΣΙΑ",
+                    meal_a: isClosed ? "ΚΛΕΙΣΤΑ ΛΟΓΩ ΕΡΓΑΣΙΩΝ" : (isWeekend ? "Της Ώρας (Κατόπιν Παραγγελίας)" : "ΠΡΟΣ ΕΠΕΞΕΡΓΑΣΙΑ"),
                     meal_b: "",
-                    status: "open",
+                    status: isClosed ? "closed" : "open",
                     type: isWeekend ? "weekend" : "weekday"
                 });
             });
 
-            document.getElementById('json-output').value = JSON.stringify(results, null, 4);
-            document.getElementById('day-count').innerText = `${results.length} Days Found`;
+            updatePreview(results);
+        }
+
+        function updatePreview(data) {
+            document.getElementById('json-output').value = JSON.stringify(data, null, 4);
+            document.getElementById('day-count').innerText = `${data.length} Days Found`;
             document.getElementById('preview-section').classList.remove('hidden');
+            // Scroll to the preview area
+            document.getElementById('preview-section').scrollIntoView({ behavior: 'smooth' });
         }
 
         // 4. GitHub API Push
@@ -151,42 +171,49 @@
             const btn = document.getElementById('update-btn');
             const data = document.getElementById('json-output').value;
 
-            if (!token || !repo) return alert("Set Token and Repo first!");
+            if (!token || !repo) return alert("Please fill in Token and Repo first!");
             
-            btn.disabled = true;
-            btn.innerText = "Connecting to GitHub...";
-
             try {
+                btn.disabled = true;
+                btn.innerText = "⏳ Committing to GitHub...";
+
                 const url = `https://api.github.com/repos/${repo}/contents/menu.json`;
                 
-                // Fetch current SHA
-                const getRes = await fetch(url, { headers: { 'Authorization': `token ${token}` }});
+                // We need to fetch the file first to get the 'sha' (GitHub requirement for updates)
+                const getRes = await fetch(url, {
+                    headers: { 'Authorization': `token ${token}` }
+                });
+                
+                if (!getRes.ok) throw new Error("Could not find menu.json in the repo.");
                 const getData = await getRes.json();
                 
                 const payload = {
-                    message: `System Update: Menu ${new Date().toLocaleDateString()}`,
+                    message: `Admin Update: ${new Date().toLocaleDateString()}`,
                     content: Base64.encode(data),
                     sha: getData.sha
                 };
 
                 const putRes = await fetch(url, {
                     method: 'PUT',
-                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json' 
+                    },
                     body: JSON.stringify(payload)
                 });
 
                 if (putRes.ok) {
-                    alert("✅ Success! The website is rebuilding. Changes live in 60s.");
-                    location.reload();
+                    alert("🚀 Website Update Triggered! Changes will be live in ~60 seconds.");
+                    window.location.href = "index.html";
                 } else {
-                    throw new Error("API Rejected the update.");
+                    const errData = await putRes.json();
+                    throw new Error(errData.message || "Update rejected.");
                 }
             } catch (e) {
-                alert("Error: " + e.message);
+                alert("❌ Error: " + e.message);
                 btn.disabled = false;
                 btn.innerText = "🚀 Update Live Website";
             }
         }
-    </script>
 </body>
 </html>
