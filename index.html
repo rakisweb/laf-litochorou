@@ -78,7 +78,7 @@
                 <span id="date-display" class="text-[10px] text-[var(--text-muted)] font-black uppercase tracking-widest italic"></span>
             </div>
             
-            <div id="today-card" class="tactical-card p-7 rounded-[2.5rem] relative overflow-hidden min-h-[220px] flex flex-col justify-center">
+            <div id="today-card" class="tactical-card p-7 rounded-[2.5rem] relative overflow-hidden min-h-[220px] flex flex-col justify-center transition-all duration-500">
                 <div class="text-center py-10 opacity-40 font-bold italic">Φόρτωση δεδομένων...</div>
             </div>
 
@@ -102,7 +102,7 @@
         </div>
 
         <!-- PAGE: PRICES -->
-        <div id="page-prices" class="hidden space-y-6 pb-10">
+        <div id="page-prices" class="hidden space-y-6 pb-10 animate-in fade-in duration-500">
             <h3 class="text-xl font-extrabold px-1">Τιμοκατάλογος</h3>
             <div id="prices-container" class="space-y-6">
                 <!-- Data from images -->
@@ -126,7 +126,7 @@
         </div>
 
         <!-- PAGE: PROGRAM -->
-        <div id="page-program" class="hidden space-y-4 pb-10">
+        <div id="page-program" class="hidden space-y-4 pb-10 animate-in fade-in duration-500">
             <h3 class="text-xl font-extrabold px-1 italic">Πρόγραμμα Μηνός</h3>
             <div id="full-program-list" class="space-y-3">
                 <!-- Injected via JS -->
@@ -186,7 +186,10 @@
             // Render Main Card
             const card = document.getElementById('today-card');
             if (meal) {
-                if (meal.status === "closed") {
+                // Check if A and B are the same for the today card too
+                const isSameMeal = meal.meal_a && meal.meal_b && meal.meal_a.trim().toLowerCase() === meal.meal_b.trim().toLowerCase();
+
+                if (meal.status === "closed" || isSameMeal) {
                     card.innerHTML = `<div class="text-center p-4"><span class="text-4xl block mb-2">⚠️</span><p class="font-black uppercase gold-text leading-tight">${meal.meal_a}</p></div>`;
                 } else {
                     card.innerHTML = `
@@ -215,18 +218,27 @@
 
             // Render Full Program List
             const list = document.getElementById('full-program-list');
-            list.innerHTML = menuData.map(item => `
+            list.innerHTML = menuData.map(item => {
+                // Logic to check if A and B are the same
+                const isSame = item.meal_a && item.meal_b && item.meal_a.trim().toLowerCase() === item.meal_b.trim().toLowerCase();
+                const hasMealB = item.meal_b && !isSame;
+                
+                return `
                 <div class="p-4 ${item.date === dateToMatch ? 'tactical-card' : 'bg-[var(--tile-bg)]'} rounded-2xl flex gap-4 items-center border border-[var(--border)] transition-all">
                     <div class="text-center bg-black/20 rounded-xl p-2 min-w-[60px] border border-[var(--border)]">
                         <div class="text-[9px] font-black opacity-40 uppercase">${item.day.slice(0,3)}</div>
                         <div class="font-black text-xl leading-none mt-0.5">${item.date.split(' ')[0]}</div>
                     </div>
-                    <div class="flex-1">
-                        <p class="text-xs font-black leading-tight uppercase ${item.date === dateToMatch ? 'gold-text' : ''}">${item.meal_a}</p>
-                        ${item.meal_b ? `<p class="text-[10px] font-bold opacity-50 mt-1">${item.meal_b}</p>` : ''}
+                    <div class="flex-1 space-y-2">
+                        <!-- Meal A and B now have exactly the same font styling -->
+                        <p class="text-[11px] font-bold leading-tight uppercase ${item.date === dateToMatch ? 'gold-text' : ''}">${item.meal_a}</p>
+                        ${hasMealB ? `
+                        <div class="h-[1px] bg-[var(--border)] w-8 opacity-30"></div>
+                        <p class="text-[11px] font-bold leading-tight uppercase ${item.date === dateToMatch ? 'gold-text' : ''}">${item.meal_b}</p>
+                        ` : ''}
                     </div>
-                </div>
-            `).join('');
+                </div>`;
+            }).join('');
         }
 
         // UI HELPERS
