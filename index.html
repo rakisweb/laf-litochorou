@@ -30,26 +30,28 @@
             --gold: #9a7b42; --tile-bg: #ffffff;
         }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); transition: all 0.3s ease; -webkit-tap-highlight-color: transparent; }
-        .tactical-card { background: var(--card-grad); border: 1px solid var(--border); }
+        .tactical-card { background: var(--card-grad); border: 1px solid var(--border); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
         .gold-text { color: var(--gold); }
         .nav-active { color: var(--gold); border-top: 2px solid var(--gold); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; height: 100%; }
+        body { min-height: 100%; display: flex; flex-direction: column; }
         .past-day { opacity: 0.3; filter: grayscale(1); }
         .today-highlight { border: 2px solid var(--gold) !important; }
     </style>
 </head>
-<body class="pb-24 no-scrollbar">
+<body class="no-scrollbar">
 
     <!-- HEADER -->
     <header class="p-4 border-b border-[var(--border)] sticky top-0 z-40 bg-[var(--bg)]/80 backdrop-blur-lg">
-        <div class="flex justify-between items-center max-w-md mx-auto">
-            <div class="flex items-center gap-3">
+        <div class="flex justify-between items-center max-w-md md:max-w-2xl mx-auto">
+            <!-- Home Button (Icon + Title) -->
+            <div onclick="switchTab('home')" class="flex items-center gap-3 cursor-pointer active:scale-95 transition">
                 <img src="icon.png" class="w-10 h-10 rounded-xl shadow-lg border border-[var(--border)]" alt="Logo">
                 <div>
                     <h1 class="text-sm font-black gold-text uppercase leading-none tracking-tight">ΛΑΦ Λιτοχώρου</h1>
-                    <p class="text-[9px] text-[var(--text-muted)] font-bold uppercase tracking-tighter mt-1 italic">XXIV ΤΘΤ - Με θέα τον Όλυμπο</p>
+                    <p class="text-[9px] text-[var(--text-muted)] font-bold uppercase tracking-tighter mt-1 italic">Με θέα τον Όλυμπο</p>
                 </div>
             </div>
             <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--tile-bg)] transition active:scale-90">
@@ -58,7 +60,7 @@
         </div>
     </header>
 
-    <main id="main-content" class="max-w-md mx-auto p-4">
+    <main id="main-content" class="flex-grow max-w-md md:max-w-2xl mx-auto p-4 w-full">
         
         <!-- PAGE: HOME -->
         <div id="page-home" class="space-y-6">
@@ -67,20 +69,21 @@
                 <span id="date-display" class="text-[10px] text-[var(--text-muted)] font-black uppercase tracking-widest italic"></span>
             </div>
             
-            <div id="today-card" class="tactical-card p-7 rounded-[2.5rem] relative overflow-hidden min-h-[220px] flex flex-col justify-center transition-all duration-500 text-center">
-                <div class="opacity-40 font-bold italic">Φόρτωση...</div>
+            <!-- Hero Card: Today's Menu -->
+            <div id="today-card" class="tactical-card p-8 rounded-[2.5rem] relative overflow-hidden min-h-[240px] flex flex-col justify-center transition-all duration-500">
+                <div class="text-center opacity-40 font-bold italic">Φόρτωση...</div>
             </div>
 
             <!-- QUICK ACCESS TILES -->
-            <div class="grid grid-cols-2 gap-3">
-                <!-- Google Maps Link optimized for Apps -->
-                <a href="https://www.google.com/maps/dir/?api=1&destination=40.1068720490656,22.508752219561405" target="_blank" class="bg-[var(--tile-bg)] border border-[var(--border)] p-4 rounded-2xl flex flex-col items-center gap-2 active:scale-95 transition">
-                    <span class="text-2xl">🗺️</span>
-                    <p class="text-[10px] font-black uppercase tracking-tighter text-center">Οδηγίες Χάρτη</p>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=40.1068720490656,22.508752219561405" target="_blank" class="bg-[var(--tile-bg)] border border-[var(--border)] p-5 rounded-3xl flex flex-col items-center gap-3 active:scale-95 transition">
+                    <span class="text-3xl">🗺️</span>
+                    <p class="text-[10px] font-black uppercase tracking-widest text-center">Οδηγίες Χάρτη</p>
                 </a>
-                <a href="tel:2352094087" class="bg-[var(--tile-bg)] border border-[var(--border)] p-4 rounded-2xl flex flex-col items-center gap-2 active:scale-95 transition text-center">
-                    <span class="text-2xl">📞</span>
-                    <p class="text-[10px] font-black uppercase tracking-tighter">Τηλέφωνο ΛΑΦ</p>
+                <a href="tel:2352094087" class="bg-[var(--tile-bg)] border border-[var(--border)] p-5 rounded-3xl flex flex-col items-center gap-3 active:scale-95 transition text-center">
+                    <span class="text-3xl">📞</span>
+                    <p class="text-[10px] font-black uppercase tracking-widest leading-none">Τηλέφωνο ΛΑΦ</p>
+                    <p class="text-[10px] font-bold gold-text mt-1">2352094087</p>
                 </a>
             </div>
         </div>
@@ -88,31 +91,34 @@
         <!-- PAGE: PRICES (Full Canteen Catalog) -->
         <div id="page-prices" class="hidden space-y-6 pb-10">
             <div class="flex flex-col gap-2 px-1">
-                <h3 class="text-xl font-black italic tracking-tight">Τιμοκατάλογος Κυλικείου</h3>
-                <input type="text" id="price-search" placeholder="Αναζήτηση..." class="bg-[var(--tile-bg)] border border-[var(--border)] rounded-xl p-3 text-sm focus:outline-none focus:border-[var(--gold)]">
+                <h3 class="text-xl font-black italic tracking-tight uppercase">Τιμοκατάλογος</h3>
+                <div class="relative">
+                    <input type="text" id="price-search" placeholder="Αναζήτηση είδους..." class="w-full bg-[var(--tile-bg)] border border-[var(--border)] rounded-2xl p-4 text-sm focus:outline-none focus:border-[var(--gold)] transition-all">
+                    <span class="absolute right-4 top-4 opacity-30">🔍</span>
+                </div>
             </div>
             <div id="canteen-categories" class="space-y-8"></div>
         </div>
 
-        <!-- PAGE: PROGRAM (Full Month with Focus) -->
+        <!-- PAGE: PROGRAM -->
         <div id="page-program" class="hidden space-y-4 pb-10">
             <div class="px-1 flex justify-between items-center">
-                <h3 class="text-xl font-black italic tracking-tight">Πρόγραμμα Μηνός</h3>
-                <button onclick="scrollToToday()" class="text-[9px] bg-[var(--gold)] text-black font-black px-2 py-1 rounded-lg uppercase">Πηγαινε στο Σημερα</button>
+                <h3 class="text-xl font-black italic tracking-tight uppercase">Πρόγραμμα Μηνός</h3>
+                <button onclick="scrollToToday()" class="text-[10px] bg-[var(--gold)] text-black font-black px-3 py-2 rounded-xl uppercase active:scale-95 transition">Σημερα</button>
             </div>
-            <div id="full-program-list" class="space-y-3"></div>
+            <div id="full-program-list" class="space-y-4"></div>
         </div>
-    </main>
 
-    <!-- FOOTER -->
-    <footer class="max-w-md mx-auto p-10 text-center space-y-4 opacity-40">
-        <div class="w-12 h-[1px] bg-[var(--gold)] mx-auto"></div>
-        <p class="text-[9px] font-black uppercase tracking-widest leading-loose">
-            ΛΑΦ Λιτοχώρου<br>
-            Εντός Στρατοπέδου Μπαλανίκα<br>
-            Τηλ: 2352094087
-        </p>
-    </footer>
+        <!-- FOOTER (Inside Main but at the end) -->
+        <footer class="p-10 text-center space-y-4 opacity-40">
+            <div class="w-12 h-[1px] bg-[var(--gold)] mx-auto"></div>
+            <p class="text-[9px] font-black uppercase tracking-widest leading-loose">
+                ΛΑΦ Λιτοχώρου<br>
+                Εντός Στρατοπέδου Μπαλανίκα<br>
+                Τηλ: 2352094087
+            </p>
+        </footer>
+    </main>
 
     <!-- NAVIGATION -->
     <nav class="fixed bottom-0 left-0 right-0 border-t border-[var(--border)] px-8 py-4 flex justify-around items-center z-50 bg-[var(--nav-bg)]/90 backdrop-blur-xl shadow-2xl">
@@ -133,7 +139,6 @@
     <script>
         let menuData = [];
         
-        // Full Catalog Data
         const canteenItems = [
             { category: "☕ Ροφήματα - Καφέδες", items: [
                 { name: "Φραπέ - Νες", price: "0,50€" }, { name: "Espresso Μονός", price: "0,55€" },
@@ -170,7 +175,6 @@
                 renderCanteen();
             } catch (e) { console.error(e); }
             initTheme();
-            if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
         }
 
         function renderUI() {
@@ -194,18 +198,24 @@
             if (meal) {
                 const isSame = meal.meal_a.trim().toLowerCase() === meal.meal_b.trim().toLowerCase();
                 if (isSame || !meal.meal_b) {
-                    card.innerHTML = `<p class="text-xl font-black leading-tight uppercase gold-text">${meal.meal_a}</p>`;
+                    card.innerHTML = `<p class="text-2xl font-black leading-tight uppercase gold-text px-4">${meal.meal_a}</p>`;
                 } else {
                     card.innerHTML = `
-                        <div class="space-y-4">
-                            <p class="text-xl font-black leading-tight uppercase">${meal.meal_a}</p>
+                        <div class="space-y-6">
+                            <div>
+                                <span class="inline-block text-[10px] font-black uppercase gold-text bg-[var(--gold)]/10 px-3 py-1 rounded-full mb-3">ΓΕΥΜΑ Α'</span>
+                                <p class="text-xl font-black leading-tight uppercase px-4">${meal.meal_a}</p>
+                            </div>
                             <div class="h-[1px] bg-[var(--border)] w-12 mx-auto opacity-30"></div>
-                            <p class="text-xl font-black leading-tight uppercase">${meal.meal_b}</p>
+                            <div>
+                                <span class="inline-block text-[10px] font-black uppercase gold-text bg-[var(--gold)]/10 px-3 py-1 rounded-full mb-3">ΓΕΥΜΑ Β'</span>
+                                <p class="text-xl font-black leading-tight uppercase px-4">${meal.meal_b}</p>
+                            </div>
                         </div>`;
                 }
             }
 
-            // Full List with Visibility Logic
+            // Full List
             const list = document.getElementById('full-program-list');
             const todayClean = new Date(); todayClean.setHours(0,0,0,0);
 
@@ -220,16 +230,16 @@
                 const showMealB = item.meal_b && !isSame;
 
                 return `
-                <div id="day-${item.date.replace(/ /g, '-')}" class="p-4 rounded-2xl flex gap-4 items-center border border-[var(--border)] transition-all ${isPast ? 'past-day' : 'bg-[var(--tile-bg)]'} ${isToday ? 'today-highlight' : ''}">
-                    <div class="text-center bg-black/20 rounded-xl p-2 min-w-[60px] border border-white/5 shadow-inner">
-                        <div class="text-[9px] font-black opacity-40 uppercase">${item.day.slice(0,3)}</div>
-                        <div class="font-black text-xl leading-none mt-0.5">${item.date.split(' ')[0]}</div>
+                <div id="day-${item.date.replace(/ /g, '-')}" class="p-5 rounded-3xl flex gap-5 items-center border border-[var(--border)] transition-all ${isPast ? 'past-day' : 'bg-[var(--tile-bg)]'} ${isToday ? 'today-highlight' : ''}">
+                    <div class="text-center bg-black/30 rounded-2xl p-3 min-w-[70px] border border-white/5 shadow-inner">
+                        <div class="text-[10px] font-black opacity-40 uppercase tracking-tighter">${item.day.slice(0,3)}</div>
+                        <div class="font-black text-2xl leading-none mt-1 tracking-tighter">${item.date.split(' ')[0]}</div>
                     </div>
-                    <div class="flex-1 space-y-2">
-                        <p class="text-[11px] font-bold leading-tight uppercase ${isToday ? 'gold-text' : 'text-[var(--text)]'}">${item.meal_a}</p>
+                    <div class="flex-1 space-y-3">
+                        <p class="text-[12px] font-bold leading-tight uppercase ${isToday ? 'gold-text' : 'text-[var(--text)]'}">${item.meal_a}</p>
                         ${showMealB ? `
                             <div class="h-[1px] bg-[var(--border)] w-6 opacity-30"></div>
-                            <p class="text-[11px] font-bold leading-tight uppercase ${isToday ? 'gold-text' : 'text-[var(--text)]'}">${item.meal_b}</p>
+                            <p class="text-[12px] font-bold leading-tight uppercase ${isToday ? 'gold-text' : 'text-[var(--text)]'}">${item.meal_b}</p>
                         ` : ''}
                     </div>
                 </div>`;
@@ -243,7 +253,7 @@
             const months = ["ΙΑΝ", "ΦΕΒ", "ΜΑΡ", "ΑΠΡ", "ΜΑΙ", "ΙΟΥΝ", "ΙΟΥΛ", "ΑΥΓ", "ΣΕΠ", "ΟΚΤ", "ΝΟΕ", "ΔΕΚ"];
             const id = `day-${target.getDate().toString().padStart(2, '0')}-${months[target.getMonth()]}-${target.getFullYear().toString().slice(-2)}`;
             const el = document.getElementById(id);
-            if (el) window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
+            if (el) window.scrollTo({ top: el.offsetTop - 120, behavior: 'smooth' });
         }
 
         function renderCanteen(query = "") {
@@ -255,10 +265,10 @@
 
             container.innerHTML = filtered.map(cat => `
                 <section>
-                    <h4 class="gold-text text-[10px] font-black uppercase tracking-[0.2em] mb-3 px-1">${cat.category}</h4>
-                    <div class="bg-[var(--tile-bg)] rounded-3xl border border-[var(--border)] overflow-hidden divide-y divide-[var(--border)]">
+                    <h4 class="gold-text text-[10px] font-black uppercase tracking-[0.2em] mb-4 px-1">${cat.category}</h4>
+                    <div class="bg-[var(--tile-bg)] rounded-[2rem] border border-[var(--border)] overflow-hidden divide-y divide-[var(--border)] shadow-xl">
                         ${cat.items.map(i => `
-                            <div class="flex justify-between p-4 items-center">
+                            <div class="flex justify-between p-5 items-center hover:bg-white/5 transition">
                                 <span class="text-sm font-bold uppercase tracking-tighter">${i.name}</span>
                                 <span class="text-sm font-black gold-text">${i.price}</span>
                             </div>
@@ -279,7 +289,7 @@
             document.getElementById('page-' + tabId).classList.remove('hidden');
             document.getElementById('btn-' + tabId).classList.add('nav-active', 'gold-text');
             window.scrollTo(0,0);
-            if (tabId === 'program') setTimeout(scrollToToday, 300);
+            if (tabId === 'program') setTimeout(scrollToToday, 200);
         }
 
         function toggleTheme() {
