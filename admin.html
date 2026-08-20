@@ -3,85 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel | ΛΑΦ Λιτοχώρου</title>
+    <title>Developer Backend | ΛΑΦ</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.5/base64.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <style>
         :root { --bg: #0f110e; --gold: #c5a059; --border: rgba(255,255,255,0.1); }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #e5e7eb; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #e5e7eb; min-height: 100vh; }
         .admin-card { background: linear-gradient(135deg, #1a1d18 0%, #0f110e 100%); border: 1px solid var(--border); }
-        input:focus { border-color: var(--gold) !important; outline: none; }
+        input:focus, textarea:focus { border-color: var(--gold) !important; outline: none; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        .gold-text { color: var(--gold); }
     </style>
 </head>
-<body class="p-4 md:p-12">
+<body class="p-4 md:p-12 no-scrollbar">
 
-    <div class="max-w-4xl mx-auto space-y-8">
-        <!-- Header -->
+    <div class="max-w-5xl mx-auto space-y-8">
+        <!-- HEADER -->
         <div class="flex justify-between items-center border-b border-white/10 pb-6">
             <div>
                 <h1 class="text-2xl font-black gold-text uppercase tracking-tighter">Developer Backend</h1>
-                <p class="text-xs font-bold opacity-50 uppercase tracking-widest">Update System v1.0</p>
+                <p class="text-[10px] font-bold opacity-50 uppercase tracking-[0.2em]">Update System v1.1 • Robust Extraction</p>
             </div>
             <a href="index.html" class="text-xs font-bold opacity-50 hover:opacity-100 uppercase border border-white/20 px-4 py-2 rounded-xl transition">Public Site ↗</a>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-            <!-- Left: Settings -->
+            <!-- LEFT: CONFIGURATION -->
             <div class="space-y-6">
-                <div class="admin-card p-6 rounded-3xl space-y-4">
+                <div class="admin-card p-6 rounded-3xl space-y-4 shadow-2xl">
                     <h2 class="text-xs font-black uppercase gold-text tracking-widest">Configuration</h2>
-                    <div class="space-y-3">
+                    <div class="space-y-4">
                         <div>
-                            <label class="text-[10px] font-bold opacity-40 uppercase ml-1">GitHub PAT Token</label>
-                            <input type="password" id="gh-token" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-xs" placeholder="ghp_xxxx...">
+                            <label class="text-[9px] font-black opacity-40 uppercase ml-1">GitHub PAT Token</label>
+                            <input type="password" id="gh-token" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-xs mt-1" placeholder="ghp_xxxxxxxxxxxx">
                         </div>
                         <div>
-                            <label class="text-[10px] font-bold opacity-40 uppercase ml-1">Repository (user/repo)</label>
-                            <input type="text" id="gh-repo" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-xs" placeholder="rakisweb/laf-litochorou">
+                            <label class="text-[9px] font-black opacity-40 uppercase ml-1">Repository (user/repo)</label>
+                            <input type="text" id="gh-repo" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-xs mt-1" placeholder="rakisweb/laf-litochorou">
                         </div>
                     </div>
-                    <button onclick="saveConfig()" class="w-full bg-white/5 hover:bg-white/10 border border-white/10 py-3 rounded-xl text-[10px] font-bold uppercase transition">Save Locally</button>
+                    <button onclick="saveConfig()" class="w-full bg-white/5 hover:bg-white/10 border border-white/10 py-3 rounded-xl text-[10px] font-black uppercase transition active:scale-95">Save Locally</button>
+                    <p class="text-[8px] opacity-30 text-center uppercase">Credentials stay in browser memory</p>
                 </div>
             </div>
 
-            <!-- Right: Action Area -->
+            <!-- RIGHT: ACTION AREA -->
             <div class="md:col-span-2 space-y-6">
-                <!-- Dropzone -->
-                <div id="dropzone" class="border-2 border-dashed border-white/10 bg-white/5 p-16 rounded-[2.5rem] text-center cursor-pointer hover:border-[var(--gold)]/50 transition-all group">
-                    <span class="text-5xl block mb-4 group-hover:scale-110 transition">📄</span>
+                <!-- DROPZONE -->
+                <div id="dropzone" class="border-2 border-dashed border-white/10 bg-white/5 p-16 rounded-[2.5rem] text-center cursor-pointer hover:border-[var(--gold)]/40 hover:bg-[var(--gold)]/5 transition-all group">
+                    <span class="text-5xl block mb-4 group-hover:scale-110 transition duration-500">📄</span>
                     <p class="text-sm font-black uppercase tracking-widest">Drop Monthly PDF Here</p>
-                    <p class="text-xs opacity-40 mt-2">The system will extract and format the menu</p>
+                    <p class="text-xs opacity-40 mt-2 font-medium">Auto-sorting fragments for maximum accuracy</p>
                     <input type="file" id="pdf-input" accept=".pdf" class="hidden">
                 </div>
 
-                <!-- Preview & Commit -->
-                <div id="preview-section" class="hidden space-y-4 animate-in fade-in duration-500">
+                <!-- PREVIEW & COMMIT -->
+                <div id="preview-section" class="hidden space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
                     <div class="flex justify-between items-center px-2">
-                        <h3 class="text-xs font-black uppercase opacity-50 tracking-widest">Data Preview</h3>
-                        <span id="day-count" class="text-[10px] font-bold gold-text bg-white/5 px-2 py-1 rounded-lg">0 Days Found</span>
+                        <h3 class="text-xs font-black uppercase opacity-50 tracking-widest italic">Extracted Data Preview</h3>
+                        <span id="day-count" class="text-[10px] font-black gold-text bg-[var(--gold)]/10 px-3 py-1.5 rounded-full border border-[var(--gold)]/20">0 Days Found</span>
                     </div>
-                    <div class="admin-card rounded-3xl overflow-hidden">
-                        <textarea id="json-output" class="w-full h-64 bg-black/20 p-6 text-[11px] font-mono text-green-500/80 no-scrollbar outline-none resize-none" spellcheck="false"></textarea>
+                    
+                    <div class="admin-card rounded-[2rem] overflow-hidden shadow-2xl">
+                        <textarea id="json-output" class="w-full h-80 bg-black/20 p-8 text-[11px] font-mono text-green-500/80 no-scrollbar outline-none resize-none leading-relaxed" spellcheck="false"></textarea>
                     </div>
+
                     <button id="update-btn" onclick="pushToGitHub()" class="w-full bg-[var(--gold)] text-black font-black p-6 rounded-3xl uppercase tracking-[0.2em] shadow-2xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-4">
-                        🚀 Update Live Website
+                        🚀 Push Update to Live Website
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    <script>
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
-        // 1. Configuration & Storage
+        // 1. Storage Logic
         function saveConfig() {
             localStorage.setItem('admin_gh_token', document.getElementById('gh-token').value);
             localStorage.setItem('admin_gh_repo', document.getElementById('gh-repo').value);
-            alert("✅ Configuration saved locally.");
+            alert("✅ Settings saved to your device.");
         }
 
         window.onload = () => {
@@ -89,7 +96,7 @@
             document.getElementById('gh-repo').value = localStorage.getItem('admin_gh_repo') || '';
         };
 
-        // 2. File Handling
+        // 2. PDF Parsing with Fragment Sorting
         const dropzone = document.getElementById('dropzone');
         const pdfInput = document.getElementById('pdf-input');
         dropzone.onclick = () => pdfInput.click();
@@ -97,37 +104,39 @@
 
         async function handleFile(file) {
             if (!file) return;
-            const reader = new FileReader();
-            reader.onload = async function() {
-                const typedarray = new Uint8Array(this.result);
-                const loadingTask = pdfjsLib.getDocument(typedarray);
-                const pdf = await loadingTask.promise;
-                let fullText = "";
+            try {
+                const reader = new FileReader();
+                reader.onload = async function() {
+                    const typedarray = new Uint8Array(this.result);
+                    const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                    let fullText = "";
 
-                for (let i = 1; i <= pdf.numPages; i++) {
-                    const page = await pdf.getPage(i);
-                    const content = await page.getTextContent();
-                    
-                    // CRITICAL FIX: Sort text fragments by Y then X coordinates 
-                    // This puts the text back in "Reading Order"
-                    const sortedItems = content.items.sort((a, b) => {
-                        if (a.transform[5] !== b.transform[5]) {
-                            return b.transform[5] - a.transform[5]; // Top to bottom
-                        }
-                        return a.transform[4] - b.transform[4]; // Left to right
-                    });
+                    for (let i = 1; i <= pdf.numPages; i++) {
+                        const page = await pdf.getPage(i);
+                        const content = await page.getTextContent();
+                        
+                        // FIX: Sort fragments by Y (top to bottom) then X (left to right)
+                        const sortedItems = content.items.sort((a, b) => {
+                            if (Math.abs(a.transform[5] - b.transform[5]) > 2) {
+                                return b.transform[5] - a.transform[5];
+                            }
+                            return a.transform[4] - b.transform[4];
+                        });
 
-                    fullText += sortedItems.map(item => item.str).join(" ") + "\n";
-                }
-                parseText(fullText);
-            };
-            reader.readAsArrayBuffer(file);
+                        fullText += sortedItems.map(item => item.str).join(" ") + "\n";
+                    }
+                    parseMenuText(fullText);
+                };
+                reader.readAsArrayBuffer(file);
+            } catch (err) {
+                alert("Error processing PDF: " + err.message);
+            }
         }
 
-        // 3. Extraction Logic (Date-Centric)
-        function parseText(text) {
+        // 3. Regex Extraction
+        function parseMenuText(text) {
             const results = [];
-            // Flexible regex: matches 2 digits, spaces, 3 Greek capitals, spaces, 2 digits
+            // Flexible regex to catch all date variants
             const dateRegex = /(\d{2}\s+[Α-Ω]{3}\s+\d{2})/g;
             const dates = [...text.matchAll(dateRegex)];
             
@@ -137,30 +146,26 @@
                 const end = dates[i+1] ? dates[i+1].index : text.length;
                 const chunk = text.substring(start, end).toUpperCase();
                 
-                // Identify the day
-                const dayMatch = chunk.match(/ΔΕΥΤΕΡΑ|ΤΡΙΤΗ|ΤΕΤΑΡΤΗ|ΠΕΜΠΤΗ|ΠΑΡΑΣΚΕΥΗ|ΣΑΒΒΑΤΟ|ΚΥΡΙΑΚΗ/);
-                const dayStr = dayMatch ? dayMatch[0] : "---";
+                const days = ["ΔΕΥΤΕΡΑ", "ΤΡΙΤΗ", "ΤΕΤΑΡΤΗ", "ΠΕΜΠΤΗ", "ΠΑΡΑΣΚΕΥΗ", "ΣΑΒΒΑΤΟ", "ΚΥΡΙΑΚΗ"];
+                let dayStr = "---";
+                days.forEach(d => { if(chunk.includes(d)) dayStr = d; });
+
                 const isWeekend = dayStr === "ΣΑΒΒΑΤΟ" || dayStr === "ΚΥΡΙΑΚΗ";
                 const isClosed = chunk.includes("ΚΛΕΙΣΤΑ");
 
                 results.push({
                     date: dateStr,
                     day: dayStr,
-                    meal_a: isClosed ? "ΚΛΕΙΣΤΑ ΛΟΓΩ ΕΡΓΑΣΙΩΝ" : (isWeekend ? "Της Ώρας (Κατόπιν Παραγγελίας)" : "ΠΡΟΣ ΕΠΕΞΕΡΓΑΣΙΑ"),
+                    meal_a: isClosed ? "ΚΛΕΙΣΤΑ ΛΟΓΩ ΕΡΓΑΣΙΩΝ" : (isWeekend ? "Της Ώρας (Κατόπιν Παραγγελίας)" : "ΕΚΚΡΕΜΕΙ ΕΠΕΞΕΡΓΑΣΙΑ"),
                     meal_b: "",
                     status: isClosed ? "closed" : "open",
                     type: isWeekend ? "weekend" : "weekday"
                 });
             });
 
-            updatePreview(results);
-        }
-
-        function updatePreview(data) {
-            document.getElementById('json-output').value = JSON.stringify(data, null, 4);
-            document.getElementById('day-count').innerText = `${data.length} Days Found`;
+            document.getElementById('json-output').value = JSON.stringify(results, null, 4);
+            document.getElementById('day-count').innerText = `${results.length} Days Found`;
             document.getElementById('preview-section').classList.remove('hidden');
-            // Scroll to the preview area
             document.getElementById('preview-section').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -171,49 +176,47 @@
             const btn = document.getElementById('update-btn');
             const data = document.getElementById('json-output').value;
 
-            if (!token || !repo) return alert("Please fill in Token and Repo first!");
+            if (!token || !repo) return alert("Please set your GitHub Token and Repo name first!");
             
-            try {
-                btn.disabled = true;
-                btn.innerText = "⏳ Committing to GitHub...";
+            btn.disabled = true;
+            btn.innerText = "⏳ Connecting to GitHub...";
 
+            try {
                 const url = `https://api.github.com/repos/${repo}/contents/menu.json`;
                 
-                // We need to fetch the file first to get the 'sha' (GitHub requirement for updates)
+                // Fetch the current SHA
                 const getRes = await fetch(url, {
-                    headers: { 'Authorization': `token ${token}` }
+                    headers: { 'Authorization': `token ${token}`, 'Cache-Control': 'no-cache' }
                 });
                 
-                if (!getRes.ok) throw new Error("Could not find menu.json in the repo.");
+                if (!getRes.ok) throw new Error("Could not find menu.json in the repository.");
                 const getData = await getRes.json();
                 
                 const payload = {
-                    message: `Admin Update: ${new Date().toLocaleDateString()}`,
+                    message: `Menu Update: ${new Date().toLocaleDateString()}`,
                     content: Base64.encode(data),
                     sha: getData.sha
                 };
 
                 const putRes = await fetch(url, {
                     method: 'PUT',
-                    headers: { 
-                        'Authorization': `token ${token}`,
-                        'Content-Type': 'application/json' 
-                    },
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
 
                 if (putRes.ok) {
-                    alert("🚀 Website Update Triggered! Changes will be live in ~60 seconds.");
+                    alert("✅ Success! menu.json updated. The website will refresh in ~60 seconds.");
                     window.location.href = "index.html";
                 } else {
-                    const errData = await putRes.json();
-                    throw new Error(errData.message || "Update rejected.");
+                    const err = await putRes.json();
+                    throw new Error(err.message || "GitHub API rejected the update.");
                 }
             } catch (e) {
-                alert("❌ Error: " + e.message);
+                alert("❌ Update Failed: " + e.message);
                 btn.disabled = false;
-                btn.innerText = "🚀 Update Live Website";
+                btn.innerText = "🚀 Push Update to Live Website";
             }
         }
+    </script>
 </body>
 </html>
