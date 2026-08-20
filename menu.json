@@ -1,67 +1,19 @@
 [
     {
-        "date": "",
-        "day": "",
-        "meal_a": "ΓΕΥΜΑ Α΄",
-        "meal_b": "ΓΕΥΜΑ Β΄",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
+        "date": "01 ΑΥΓ 26",
+        "day": "ΣΑΒΒΑΤΟ",
         "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
         "meal_b": "",
         "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "01 ΑΥΓ 26",
-        "day": "ΣΑΒΒΑΤΟ",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
         "type": "weekend"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
     },
     {
         "date": "02 ΑΥΓ 26",
         "day": "ΚΥΡΙΑΚΗ",
-        "meal_a": "",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
         "meal_b": "",
         "status": "open",
         "type": "weekend"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
     },
     {
         "date": "03 ΑΥΓ 26",
@@ -72,56 +24,24 @@
         "type": "weekday"
     },
     {
-        "date": "",
-        "day": "",
+        "date": "04 ΑΥΓ 26",
+        "day": "ΤΡΙΤΗ",
         "meal_a": "ΚΟΤΟΠΟΥΛΟ ΣΟΥΒΛΑΣ ΜΕ ΠΑΤΑΤΕΣ ΤΗΓΑΝΙΤΕΣ",
         "meal_b": "ΓΕΜΙΣΤΑ ΟΡΦΑΝΑ",
         "status": "open",
         "type": "weekday"
     },
     {
-        "date": "04 ΑΥΓ 26",
-        "day": "ΤΡΙΤΗ",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
+        "date": "05 ΑΥΓ 26",
+        "day": "ΤΕΤΑΡΤΗ",
         "meal_a": "ΧΟΙΡΙΝΗ ΤΗΓΑΝΙΑ ΜΕ ΡΥΖΙ",
         "meal_b": "ΤΟΡΤΕΛΙΝΙΑ ΑΛΑ ΚΡΕΜ",
         "status": "open",
         "type": "weekday"
     },
     {
-        "date": "05 ΑΥΓ 26",
-        "day": "ΤΕΤΑΡΤΗ",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
         "date": "06 ΑΥΓ 26",
-        "day": "",
+        "day": "ΠΕΜΠΤΗ",
         "meal_a": "ΚΑΝΕΛΟΝΙΑ ΜΕ ΚΙΜΑ",
         "meal_b": "ΣΟΥΠΙΕΣ ΜΕ ΣΠΑΝΑΚΙ",
         "status": "open",
@@ -136,112 +56,48 @@
         "type": "weekday"
     },
     {
-        "date": "",
-        "day": "",
+        "date": "08 ΑΥΓ 26",
+        "day": "ΣΑΒΒΑΤΟ",
         "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
         "meal_b": "",
         "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "08 ΑΥΓ 26",
-        "day": "ΣΑΒΒΑΤΟ",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
         "type": "weekend"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
     },
     {
         "date": "09 ΑΥΓ 26",
         "day": "ΚΥΡΙΑΚΗ",
-        "meal_a": "",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
         "meal_b": "",
         "status": "open",
         "type": "weekend"
     },
     {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
         "date": "10 ΑΥΓ 26",
         "day": "ΔΕΥΤΕΡΑ",
-        "meal_a": "ΚΛΕΙΣΤΑ ΛΟΓΩ ΕΡΓΑΣΙΩΝ ΓΕΝΙΚΗΣ ΚΑΘΑΡΙΟΤΗΤΑΣ - ΑΠΟΛΥΜΑΝΣΗΣ - ΣΥΝΤΗΡΗΣΗΣ",
-        "meal_b": "",
+        "meal_a": "ΚΛΕΙΣΤΑ ΛΟΓΩ ΕΡΓΑΣΙΩΝ ΓΕΝΙΚΗΣ ΚΑΘΑΡΙΟΤΗΤΑΣ ΑΠΟΛΥΜΑΝΣΗΣ ΣΥΝΤΗΡΗΣΗΣ",
+        "meal_b": "ΚΛΕΙΣΤΑ ΛΟΓΩ ΕΡΓΑΣΙΩΝ ΓΕΝΙΚΗΣ ΚΑΘΑΡΙΟΤΗΤΑΣ ΑΠΟΛΥΜΑΝΣΗΣ ΣΥΝΤΗΡΗΣΗΣ",
         "status": "closed",
         "type": "weekday"
     },
     {
-        "date": "",
-        "day": "",
+        "date": "11 ΑΥΓ 26",
+        "day": "ΤΡΙΤΗ",
         "meal_a": "ΜΠΙΦΤΕΚΙ ΚΟΤΟΠΟΥΛΟ ΜΕ ΚΟΥΣ ΚΟΥΣ",
         "meal_b": "ΜΠΡΙΑΜ ΜΕ ΚΟΛΟΚΥΘΑΚΙΑ & ΜΕΛΙΤΖΑΝΕΣ",
         "status": "open",
         "type": "weekday"
     },
     {
-        "date": "11 ΑΥΓ 26",
-        "day": "ΤΡΙΤΗ",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "ΓΕΜΙΣΤΑ ΜΕ ΚΙΜΑ",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
         "date": "12 ΑΥΓ 26",
         "day": "ΤΕΤΑΡΤΗ",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
+        "meal_a": "ΓΕΜΙΣΤΑ ΜΕ ΚΙΜΑ",
+        "meal_b": "ΓΑΡΙΔΟΜΑΚΑΡΟΝΑΔΑ (ΜΕ ΦΡΕΣΚΙΑ ΓΑΡΙΔΑ)",
         "status": "open",
         "type": "weekday"
     },
     {
         "date": "13 ΑΥΓ 26",
-        "day": "",
+        "day": "ΠΕΜΠΤΗ",
         "meal_a": "ΧΟΙΡΙΝΟ ΚΟΝΤΟΣΟΥΒΛΙ ΜΕ ΠΑΤΑΤΕΣ ΦΟΥΡΝΟΥ",
         "meal_b": "ΜΠΑΜΙΕΣ",
         "status": "open",
@@ -258,7 +114,7 @@
     {
         "date": "15 ΑΥΓ 26",
         "day": "ΣΑΒΒΑΤΟ",
-        "meal_a": "",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
         "meal_b": "",
         "status": "open",
         "type": "weekend"
@@ -322,7 +178,7 @@
     {
         "date": "23 ΑΥΓ 26",
         "day": "ΚΥΡΙΑΚΗ",
-        "meal_a": "",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
         "meal_b": "",
         "status": "open",
         "type": "weekend"
@@ -339,7 +195,7 @@
         "date": "25 ΑΥΓ 26",
         "day": "ΤΡΙΤΗ",
         "meal_a": "ΜΠΟΥΤΙ ΚΟΤΟΠΟΥΛΟ ΜΕ ΧΥΛΟΠΙΤΕΣ",
-        "meal_b": "ΤΑΛΙΑΤΕΛΕΣ ΜΕ ΣΠΑΝΑΚΙ ΚΑΙ ΑΝΘΟ- ΤΥΡΟ",
+        "meal_b": "ΤΑΛΙΑΤΕΛΕΣ ΜΕ ΣΠΑΝΑΚΙ ΚΑΙ ΑΝΘΟΤΥΡΟ",
         "status": "open",
         "type": "weekday"
     },
@@ -355,7 +211,7 @@
         "date": "27 ΑΥΓ 26",
         "day": "ΠΕΜΠΤΗ",
         "meal_a": "ΧΟΙΡΙΝΟ ΨΗΤΟ ΜΕ ΣΑΛΤΣΑ ΚΡΑΣΙΟΥ",
-        "meal_b": "",
+        "meal_b": "ΓΑΡΙΔΟΜΑΚΑΡΟΝΑΔΑ (ΜΕ ΦΡΕΣΚΙΑ ΓΑΡΙΔΑ)",
         "status": "open",
         "type": "weekday"
     },
@@ -363,14 +219,14 @@
         "date": "28 ΑΥΓ 26",
         "day": "ΠΑΡΑΣΚΕΥΗ",
         "meal_a": "ΤΣΙΠΟΥΡΑ ΜΕ ΨΗΤΑ ΛΑΧΑΝΙΚΑ",
-        "meal_b": "",
+        "meal_b": "ΦΑΣΟΛΙΑ ΓΙΓΑΝΤΕΣ",
         "status": "open",
         "type": "weekday"
     },
     {
         "date": "29 ΑΥΓ 26",
         "day": "ΣΑΒΒΑΤΟ",
-        "meal_a": "",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
         "meal_b": "",
         "status": "open",
         "type": "weekend"
@@ -378,32 +234,16 @@
     {
         "date": "30 ΑΥΓ 26",
         "day": "ΚΥΡΙΑΚΗ",
-        "meal_a": "",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
         "meal_b": "",
         "status": "open",
         "type": "weekend"
     },
     {
-        "date": "",
-        "day": "",
-        "meal_a": "ΓΕΥΜΑ Α΄",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
-        "date": "",
-        "day": "",
-        "meal_a": "",
-        "meal_b": "",
-        "status": "open",
-        "type": "weekday"
-    },
-    {
         "date": "31 ΑΥΓ 26",
         "day": "ΔΕΥΤΕΡΑ",
         "meal_a": "ΠΑΠΟΥΤΣΑΚΙΑ",
-        "meal_b": "",
+        "meal_b": "ΚΑΡΜΠΟΝΑΡΑ ΖΥΜΑΡΙΚΩΝ (χωρίς αυγά)",
         "status": "open",
         "type": "weekday"
     }
