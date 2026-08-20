@@ -1,0 +1,410 @@
+[
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "ΓΕΥΜΑ Α΄",
+        "meal_b": "ΓΕΥΜΑ Β΄",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "01 ΑΥΓ 26",
+        "day": "ΣΑΒΒΑΤΟ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "02 ΑΥΓ 26",
+        "day": "ΚΥΡΙΑΚΗ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "03 ΑΥΓ 26",
+        "day": "ΔΕΥΤΕΡΑ",
+        "meal_a": "ΜΟΥΣΑΚΑΣ",
+        "meal_b": "ΑΡΑΚΑΣ ΜΕ ΠΑΤΑΤΕΣ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "ΚΟΤΟΠΟΥΛΟ ΣΟΥΒΛΑΣ ΜΕ ΠΑΤΑΤΕΣ ΤΗΓΑΝΙΤΕΣ",
+        "meal_b": "ΓΕΜΙΣΤΑ ΟΡΦΑΝΑ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "04 ΑΥΓ 26",
+        "day": "ΤΡΙΤΗ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "ΧΟΙΡΙΝΗ ΤΗΓΑΝΙΑ ΜΕ ΡΥΖΙ",
+        "meal_b": "ΤΟΡΤΕΛΙΝΙΑ ΑΛΑ ΚΡΕΜ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "05 ΑΥΓ 26",
+        "day": "ΤΕΤΑΡΤΗ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "06 ΑΥΓ 26",
+        "day": "",
+        "meal_a": "ΚΑΝΕΛΟΝΙΑ ΜΕ ΚΙΜΑ",
+        "meal_b": "ΣΟΥΠΙΕΣ ΜΕ ΣΠΑΝΑΚΙ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "07 ΑΥΓ 26",
+        "day": "ΠΑΡΑΣΚΕΥΗ",
+        "meal_a": "ΤΣΙΠΟΥΡΑ ΜΕ ΠΑΤΖΑΡΙ ΣΑΛΑΤΑ",
+        "meal_b": "ΡΕΒΥΘΙΑ ΛΕΜΟΝΑΤΑ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "08 ΑΥΓ 26",
+        "day": "ΣΑΒΒΑΤΟ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "09 ΑΥΓ 26",
+        "day": "ΚΥΡΙΑΚΗ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "10 ΑΥΓ 26",
+        "day": "ΔΕΥΤΕΡΑ",
+        "meal_a": "ΚΛΕΙΣΤΑ ΛΟΓΩ ΕΡΓΑΣΙΩΝ ΓΕΝΙΚΗΣ ΚΑΘΑΡΙΟΤΗΤΑΣ - ΑΠΟΛΥΜΑΝΣΗΣ - ΣΥΝΤΗΡΗΣΗΣ",
+        "meal_b": "",
+        "status": "closed",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "ΜΠΙΦΤΕΚΙ ΚΟΤΟΠΟΥΛΟ ΜΕ ΚΟΥΣ ΚΟΥΣ",
+        "meal_b": "ΜΠΡΙΑΜ ΜΕ ΚΟΛΟΚΥΘΑΚΙΑ & ΜΕΛΙΤΖΑΝΕΣ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "11 ΑΥΓ 26",
+        "day": "ΤΡΙΤΗ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "ΓΕΜΙΣΤΑ ΜΕ ΚΙΜΑ",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "12 ΑΥΓ 26",
+        "day": "ΤΕΤΑΡΤΗ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "13 ΑΥΓ 26",
+        "day": "",
+        "meal_a": "ΧΟΙΡΙΝΟ ΚΟΝΤΟΣΟΥΒΛΙ ΜΕ ΠΑΤΑΤΕΣ ΦΟΥΡΝΟΥ",
+        "meal_b": "ΜΠΑΜΙΕΣ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "14 ΑΥΓ 26",
+        "day": "ΠΑΡΑΣΚΕΥΗ",
+        "meal_a": "ΣΑΡΔΕΛΑ ΜΕ ΨΗΤΑ ΛΑΧΑΝΙΚΑ",
+        "meal_b": "ΙΜΑΜ ΜΕ ΠΑΤΑΤΕΣ ΚΥΔΩΝΑΤΕΣ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "15 ΑΥΓ 26",
+        "day": "ΣΑΒΒΑΤΟ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "16 ΑΥΓ 26",
+        "day": "ΚΥΡΙΑΚΗ",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "17 ΑΥΓ 26",
+        "day": "ΔΕΥΤΕΡΑ",
+        "meal_a": "ΠΑΠΟΥΤΣΑΚΙΑ",
+        "meal_b": "ΦΑΣΟΛΑΚΙΑ ΜΕ ΠΑΤΑΤΕΣ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "18 ΑΥΓ 26",
+        "day": "ΤΡΙΤΗ",
+        "meal_a": "ΦΙΛΕΤΟ ΚΟΤΟΠΟΥΛΟ ΜΕ ΓΛΥΚΟΞΙΝΗ ΣΑΛΤΣΑ ΠΑΤΑΤΕΣ ΦΟΥΡΝΟΥ",
+        "meal_b": "ΣΟΥΦΛΕ ΖΥΜΑΡΙΚΩΝ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "19 ΑΥΓ 26",
+        "day": "ΤΕΤΑΡΤΗ",
+        "meal_a": "ΣΟΥΤΖΟΥΚΑΚΙΑ ΣΜΥΡΝΕΙΚΑ ΜΕ ΡΥΖΙ",
+        "meal_b": "ΚΑΛΑΜΑΡΑΚΙΑ ΚΟΚΚΙΝΙΣΤΑ ΜΕ ΡΥΖΙ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "20 ΑΥΓ 26",
+        "day": "ΠΕΜΠΤΗ",
+        "meal_a": "ΦΙΛΕΤΑΚΙΑ ΧΟΙΡΙΝΑ ΜΕ ΣΩΣ ΜΕΛΙΟΥ ΚΑΙ ΠΟΥΡΕ",
+        "meal_b": "ΓΕΜΙΣΤΑ ΟΡΦΑΝΑ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "21 ΑΥΓ 26",
+        "day": "ΠΑΡΑΣΚΕΥΗ",
+        "meal_a": "ΛΑΒΡΑΚΙ ΜΕ ΠΑΤΑΤΟΣΑΛΑΤΑ",
+        "meal_b": "ΜΠΡΙΑΜ ΜΕ ΚΟΛΟΚΥΘΑΚΙΑ & ΜΕΛΙΤΖΑΝΕΣ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "22 ΑΥΓ 26",
+        "day": "ΣΑΒΒΑΤΟ",
+        "meal_a": "Της Ώρας (Κατόπιν Παραγγελίας)",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "23 ΑΥΓ 26",
+        "day": "ΚΥΡΙΑΚΗ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "24 ΑΥΓ 26",
+        "day": "ΔΕΥΤΕΡΑ",
+        "meal_a": "ΠΑΣΤΙΤΣΙΟ",
+        "meal_b": "ΣΠΑΝΑΚΟΡΥΖΟ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "25 ΑΥΓ 26",
+        "day": "ΤΡΙΤΗ",
+        "meal_a": "ΜΠΟΥΤΙ ΚΟΤΟΠΟΥΛΟ ΜΕ ΧΥΛΟΠΙΤΕΣ",
+        "meal_b": "ΤΑΛΙΑΤΕΛΕΣ ΜΕ ΣΠΑΝΑΚΙ ΚΑΙ ΑΝΘΟ- ΤΥΡΟ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "26 ΑΥΓ 26",
+        "day": "ΤΕΤΑΡΤΗ",
+        "meal_a": "ΓΙΑΟΥΡΤΛΟΥ ΚΕΜΠΑΠ ΜΕ ΠΑΤΑΤΕΣ COUNTRY",
+        "meal_b": "ΙΜΑΜ ΜΕ ΠΑΤΑΤΕΣ ΚΥΔΩΝΑΤΕΣ",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "27 ΑΥΓ 26",
+        "day": "ΠΕΜΠΤΗ",
+        "meal_a": "ΧΟΙΡΙΝΟ ΨΗΤΟ ΜΕ ΣΑΛΤΣΑ ΚΡΑΣΙΟΥ",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "28 ΑΥΓ 26",
+        "day": "ΠΑΡΑΣΚΕΥΗ",
+        "meal_a": "ΤΣΙΠΟΥΡΑ ΜΕ ΨΗΤΑ ΛΑΧΑΝΙΚΑ",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "29 ΑΥΓ 26",
+        "day": "ΣΑΒΒΑΤΟ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "30 ΑΥΓ 26",
+        "day": "ΚΥΡΙΑΚΗ",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekend"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "ΓΕΥΜΑ Α΄",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "",
+        "day": "",
+        "meal_a": "",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    },
+    {
+        "date": "31 ΑΥΓ 26",
+        "day": "ΔΕΥΤΕΡΑ",
+        "meal_a": "ΠΑΠΟΥΤΣΑΚΙΑ",
+        "meal_b": "",
+        "status": "open",
+        "type": "weekday"
+    }
+]
