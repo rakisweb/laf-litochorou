@@ -181,5 +181,23 @@
             });
         }
     </script>
+    <!-- iOS Install Instructions (Shows only on iPhone browser) -->
+    <div id="ios-prompt" class="hidden fixed bottom-20 left-4 right-4 bg-amber-100 text-black p-4 rounded-xl shadow-2xl z-[100] flex items-center gap-4">
+        <div class="text-2xl">📲</div>
+        <div class="text-xs">
+            <p class="font-bold">Εγκατάσταση στην αρχική οθόνη:</p>
+            <p>Πατήστε το <span class="font-bold">Κοινοποίηση (Share)</span> και μετά <span class="font-bold">"Προσθήκη στην οθόνη αφετηρίας"</span>.</p>
+        </div>
+        <button onclick="document.getElementById('ios-prompt').remove()" class="text-gray-500 font-bold ml-auto">X</button>
+    </div>
+    
+    <script>
+        // Show prompt only on iOS and if not already installed
+        const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+        if (isIos && !isStandalone) {
+            document.getElementById('ios-prompt').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
